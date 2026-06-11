@@ -22,13 +22,27 @@ jobs:
           script: |
             cd ~/lms-cloud-ai
 
+            echo "Pull latest code..."
             git pull origin main
 
-            composer install --no-interaction --prefer-dist
+            echo "Build Docker image..."
+            docker build -t lms-ai .
 
-            npm install --legacy-peer-deps
+            echo "Stop old container..."
+            docker stop lms-ai-container || true
 
-            npm run build
+            echo "Remove old container..."
+            docker rm lms-ai-container || true
 
-            php artisan config:clear
-            php artisan config:cache
+            echo "Run new container..."
+            docker run -d \
+              --name lms-ai-container \
+              --restart unless-stopped \
+              -p 8000:8000 \
+              --env-file .env \
+              lms-ai
+
+            echo "Cleanup unused Docker resources..."
+            docker image prune -f
+
+            echo "Deployment completed successfully!"
