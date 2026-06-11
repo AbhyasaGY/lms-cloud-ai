@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\AiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +21,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+    Route::post('/ai/summary', [AiController::class, 'generateSummary'])->name('ai.summary');
 });
 
 require __DIR__.'/auth.php';
