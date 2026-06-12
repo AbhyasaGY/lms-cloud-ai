@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< Updated upstream
     "content-hash": "583b927a56389b84fd734fca7a41b6d3",
+=======
+    "content-hash": "39696616e83eb417ce386ce164b4e1cd",
+>>>>>>> Stashed changes
     "packages": [
         {
             "name": "brick/math",
@@ -2072,6 +2076,7 @@
             "time": "2026-03-08T20:05:35+00:00"
         },
         {
+<<<<<<< Updated upstream
             "name": "matthewbdaly/laravel-azure-storage",
             "version": "2.0.8",
             "source": {
@@ -2140,6 +2145,8 @@
             "time": "2022-10-17T13:38:14+00:00"
         },
         {
+=======
+>>>>>>> Stashed changes
             "name": "microsoft/azure-storage-blob",
             "version": "1.5.4",
             "source": {
@@ -8661,12 +8668,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.3"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }

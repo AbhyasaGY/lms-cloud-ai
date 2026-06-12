@@ -26,4 +26,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/ai/summary', [AiController::class, 'generateSummary'])->name('ai.summary');
 });
 
+Route::get('/test-deploy', function () {
+    return 'DEPLOY BERHASIL 12 JUNI 2026';
+});
+
 require __DIR__.'/auth.php';
