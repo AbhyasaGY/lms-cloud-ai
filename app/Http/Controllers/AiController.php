@@ -13,7 +13,7 @@ class AiController extends Controller
             'text_materi' => 'required|string'
         ]);
 
-        $url = 'https://api-inference.huggingface.co/models/facebook/bart-large-cnn';
+        $url = 'https://router.huggingface.co/hf-inference/models/facebook/bart-large-cnn';
         $apiKey = config('services.huggingface.key');
 
         $response = Http::withHeaders([
