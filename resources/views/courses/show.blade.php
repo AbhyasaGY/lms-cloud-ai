@@ -21,6 +21,44 @@
                     Anda. Model deployment utamanya meliputi public cloud, private cloud, dan hybrid cloud.
                 </div>
 
+                @if(session('success'))
+                <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-md">
+                    {{ session('success') }}
+                </div>
+                @endif
+
+                <div class="my-6 p-6 bg-gray-50 border rounded-lg">
+                    <h4 class="text-lg font-bold mb-4">📚 Modul Pembelajaran</h4>
+
+                    @if($course->module_url)
+                    <div class="mb-4">
+                        <a href="{{ $course->module_url }}" target="_blank"
+                            class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
+                            ⬇️ Download / Lihat Modul
+                        </a>
+                    </div>
+                    @else
+                    <p class="text-sm text-gray-500 mb-4">Belum ada modul yang diunggah untuk kelas ini.</p>
+                    @endif
+
+                    <hr class="my-4">
+
+                    <form action="{{ route('courses.upload', $course->id) }}" method="POST"
+                        enctype="multipart/form-data" class="flex items-center space-x-4">
+                        @csrf
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Unggah Modul Baru
+                                (PDF/MP4)</label>
+                            <input type="file" name="module_file" accept=".pdf, .mp4" required
+                                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        </div>
+                        <button type="submit"
+                            class="bg-gray-800 hover:bg-black text-white font-bold py-2 px-4 rounded transition mt-5">
+                            Upload ke Azure
+                        </button>
+                    </form>
+                </div>
+
                 <hr class="my-6">
 
                 <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
@@ -79,7 +117,7 @@
                 if (data.success) {
                     // Sesuaikan 'summary_text' dengan format response asli dari Hugging Face
                     hasilBox.innerHTML = '<strong>Hasil Ringkasan:</strong><br>' + data.data[0]
-                    .summary_text;
+                        .summary_text;
                 } else {
                     hasilBox.innerHTML =
                         '<span class="text-red-500">Gagal mendapatkan ringkasan dari AI.</span>';

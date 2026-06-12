@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
     Route::get('/courses/{course}', [CourseController::class, 'show'])->name('courses.show');
+    Route::post('/courses/{course}/upload', [CourseController::class, 'uploadModule'])->name('courses.upload');
     Route::post('/ai/summary', [AiController::class, 'generateSummary'])->name('ai.summary');
 });
 
