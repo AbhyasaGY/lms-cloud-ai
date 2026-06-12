@@ -2,6 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+	<h1 style="color:red">TEST CDN DEBUG</h1>
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
