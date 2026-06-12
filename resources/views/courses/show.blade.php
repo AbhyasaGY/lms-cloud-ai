@@ -27,6 +27,22 @@
                 </div>
                 @endif
 
+                @if(session('error'))
+                <div class="mb-4 p-4 bg-red-100 text-red-700 rounded-md">
+                    {{ session('error') }}
+                </div>
+                @endif
+
+                @if ($errors->any())
+                <div class="mb-4 p-4 bg-red-100 text-red-700 rounded-md">
+                    <ul class="list-disc pl-5">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                 <div class="my-6 p-6 bg-gray-50 border rounded-lg">
                     <h4 class="text-lg font-bold mb-4">📚 Modul Pembelajaran</h4>
 
